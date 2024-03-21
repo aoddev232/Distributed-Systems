@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  broker:
+    build: broker
+    ports:
+      - "9000:9000"
+    depends_on:
+      - auldfellas
+      - dodgygeezers
+      - girlsallowed
+    environment:
+      URLS: http://auldfellas:9001/quotation?wsdl http://dodgygeezers:9002/quotation?wsdl http://girlsallowed:9003/quotation?wsdl
+    networks:
+      - myBrokerNet
+
+  auldfellas:
+    build: auldfellas
+    networks:
+      - myBrokerNet
+
+  dodgygeezers:
+    build: dodgygeezers
+    networks:
+      - myBrokerNet
+
+  girlsallowed:
+    build: girlsallowed
+    networks:
+      - myBrokerNet
+
+networks:
+  myBrokerNet:

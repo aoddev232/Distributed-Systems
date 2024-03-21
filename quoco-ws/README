@@ -1,0 +1,4 @@
+TO RUN TASK 5:
+> mvn clean package
+> docker-compose up --build
+> mvn exec::java -pl client
